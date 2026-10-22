@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Rockey Mathipa — Computer Science graduate and website developer. Explore selected work, technical skills and contact details.">
+<title>Rockey Mathipa | Web Developer Portfolio</title>
+<style>
+:root {
+  --site-primary: #153f35;
+  --site-on-primary: #ffffff;
+  --site-secondary: #d9f36a;
+  --site-on-secondary: #17251e;
+  --site-background: #f5f6f0;
+  --site-on-background: #17251e;
+  --site-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-font-heading: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+  --muted: #65716a;
+  --surface: #ffffff;
+  --line: #dce2d9;
+  --accent: #a7c832;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: light-dark(#f5f6f0, #111a16); color: light-dark(#17251e, #edf4ee); font-family: var(--site-font-body); line-height: 1.6; }
+#site-root { min-height: 100vh; width: 100%; border-radius: 0; background-color: var(--site-background); color: var(--site-on-background); overflow: hidden; }
+a { color: inherit; }
+.container { width: min(1120px, calc(100% - 44px)); margin: 0 auto; }
+header { padding: 22px 0; border-bottom: 1px solid var(--line); }
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+.brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: -.04em; text-decoration: none; }
+.brand-mark { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 13px; color: var(--site-on-primary); background: var(--site-primary); font-size: 15px; letter-spacing: -.06em; }
+.brand span:last-child { font-size: 15px; }
+.nav-links { display: flex; align-items: center; gap: 26px; }
+.nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 650; }
+.nav-links a:hover { color: var(--site-primary); }
+.pill-link { padding: 10px 16px; background: var(--site-primary); color: white !important; border-radius: calc(999px * var(--site-radius-scale)); }
+.hero { padding: clamp(64px, 10vw, 112px) 0 78px; position: relative; }
+.hero-grid { display: grid; grid-template-columns: 1.35fr .65fr; align-items: center; gap: 60px; }
+.eyebrow { display: inline-flex; align-items: center; gap: 9px; color: #315c49; font-size: 12px; text-transform: uppercase; letter-spacing: .14em; font-weight: 800; }
+.eyebrow:before { content: ""; width: 24px; height: 2px; background: var(--accent); }
+h1, h2, h3 { font-family: var(--site-font-heading); line-height: 1.08; letter-spacing: -.055em; margin: 0; }
+h1 { font-size: clamp(46px, 7vw, 78px); max-width: 780px; margin-top: 20px; }
+h1 em { font-style: normal; color: #426e50; }
+.hero-copy { max-width: 600px; margin: 24px 0 30px; color: var(--muted); font-size: 17px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: 1px solid var(--site-primary); border-radius: calc(999px * var(--site-radius-scale)); padding: 13px 19px; text-decoration: none; font-size: 14px; font-weight: 750; transition: transform .2s, background .2s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--site-primary); color: white; }
+.btn-secondary { background: transparent; color: var(--site-primary); }
+.profile-card { background: var(--site-primary); color: white; padding: 30px; border-radius: calc(28px * var(--site-radius-scale)); position: relative; overflow: hidden; min-height: 330px; display: flex; flex-direction: column; justify-content: space-between; }
+.profile-card:after { content: ""; position: absolute; width: 240px; height: 240px; right: -90px; top: -90px; border: 1px solid rgba(255,255,255,.22); border-radius: 50%; box-shadow: 0 0 0 28px rgba(255,255,255,.035), 0 0 0 58px rgba(255,255,255,.025); opacity: var(--site-decoration-opacity); }
+.profile-initials { display: grid; place-items: center; width: 86px; height: 86px; border-radius: 24px; background: var(--site-secondary); color: var(--site-on-secondary); font-size: 28px; font-weight: 900; letter-spacing: -.07em; }
+.profile-caption { position: relative; z-index: 1; }
+.profile-caption small { color: #d5e3d9; text-transform: uppercase; letter-spacing: .12em; font-size: 11px; font-weight: 700; }
+.profile-caption h2 { font-size: 28px; margin: 8px 0; }
+.profile-caption p { margin: 0; color: #d5e3d9; font-size: 14px; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; padding: 25px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.stat strong { display: block; font-size: 18px; letter-spacing: -.04em; }
+.stat span { color: var(--muted); font-size: 12px; }
+section { padding: 88px 0; }
+.section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 32px; }
+.section-kicker { color: #54765a; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .15em; margin-bottom: 12px; }
+h2.section-title { font-size: clamp(32px, 4vw, 48px); max-width: 650px; }
+.section-intro { max-width: 470px; color: var(--muted); margin: 14px 0 0; }
+.project-card { background: var(--surface); border: 1px solid var(--line); border-radius: calc(24px * var(--site-radius-scale)); overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; }
+.project-visual { min-height: 310px; background: #e6eddd; padding: 26px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.browser { background: white; border: 1px solid #d4ded1; border-radius: 12px; width: 100%; max-width: 420px; box-shadow: 0 22px 50px rgba(24,53,35,.12); transform: rotate(-2deg); overflow: hidden; }
+.browser-top { display: flex; gap: 5px; padding: 10px 12px; border-bottom: 1px solid #e8ece5; }
+.browser-top i { width: 6px; height: 6px; border-radius: 50%; background: #c3cfc0; }
+.browser-content { padding: 25px 22px 24px; color: #183e30; }
+.browser-label { font-size: 9px; text-transform: uppercase; letter-spacing: .16em; color: #6d876c; font-weight: 800; }
+.browser-content h3 { font-size: clamp(22px, 3vw, 34px); margin: 10px 0; }
+.browser-content p { color: #647669; font-size: 11px; max-width: 240px; }
+.fake-lines { display: flex; gap: 7px; margin-top: 17px; }
+.fake-lines span { height: 7px; width: 56px; border-radius: 5px; background: #d9e6ce; }
+.fake-lines span:first-child { background: #9fbd50; }
+.project-details { padding: clamp(26px, 4vw, 46px); display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
+.project-number { color: #6a8762; font-size: 12px; font-weight: 800; letter-spacing: .14em; }
+.project-details h3 { font-size: 31px; margin: 12px 0; }
+.project-details p { color: var(--muted); margin: 0 0 22px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
+.tag { background: #edf2e7; color: #355440; border-radius: 999px; padding: 6px 10px; font-size: 11px; font-weight: 750; }
+.text-link { color: #315c49; font-weight: 800; text-decoration: none; border-bottom: 1px solid #a5bb9b; padding-bottom: 4px; }
+.about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; }
+.about-stamp { background: var(--site-secondary); color: var(--site-on-secondary); border-radius: calc(24px * var(--site-radius-scale)); padding: 28px; min-height: 250px; display: flex; flex-direction: column; justify-content: space-between; }
+.about-stamp strong { font-size: 60px; line-height: 1; letter-spacing: -.08em; }
+.about-stamp span { font-weight: 750; max-width: 200px; }
+.about-copy p { color: var(--muted); margin: 0 0 18px; }
+.skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.skill-card { padding: 24px; border: 1px solid var(--line); border-radius: calc(18px * var(--site-radius-scale)); background: var(--surface); }
+.skill-icon { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; background: #e9f0df; color: #315c49; font-weight: 900; margin-bottom: 19px; }
+.skill-card h3 { font-size: 19px; margin-bottom: 10px; letter-spacing: -.03em; }
+.skill-card p { color: var(--muted); font-size: 13px; margin: 0; }
+.experience { background: #e9eee4; }
+.experience-row { display: grid; grid-template-columns: 180px 1fr; gap: 30px; padding: 24px 0; border-top: 1px solid #d1dbce; }
+.experience-row:last-child { border-bottom: 1px solid #d1dbce; }
+.experience-date { font-size: 12px; color: #5d7860; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+.experience-row h3 { font-size: 22px; margin-bottom: 8px; }
+.experience-row p { color: #59685e; margin: 0; max-width: 700px; }
+.contact-panel { background: var(--site-primary); color: white; padding: clamp(30px, 6vw, 65px); border-radius: calc(28px * var(--site-radius-scale)); display: flex; justify-content: space-between; align-items: end; gap: 35px; }
+.contact-panel .section-kicker { color: var(--site-secondary); }
+.contact-panel h2 { font-size: clamp(34px, 5vw, 58px); max-width: 600px; }
+.contact-panel p { color: #d4e0d7; max-width: 530px; }
+.contact-panel .btn { background: var(--site-secondary); color: var(--site-on-secondary); border-color: var(--site-secondary); white-space: nowrap; }
+footer { padding: 28px 0; color: var(--muted); font-size: 12px; }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.footer-links { display: flex; gap: 18px; }
+.footer-links a { text-decoration: none; }
+@media (prefers-color-scheme: dark) {
+  :root { --site-background: #111a16; --site-on-background: #edf4ee; --surface: #19251f; --line: #304037; --muted: #b0beb4; }
+  .eyebrow, .text-link { color: #c8e5b9; }
+  h1 em { color: #b8d9a9; }
+  .pill-link, .btn-primary { background: #d9f36a; color: #17251e !important; }
+  .btn-secondary { color: #edf4ee; border-color: #a8c6ae; }
+  .project-visual { background: #26362b; }
+  .tag, .skill-icon { background: #2b3c30; color: #d7edc8; }
+  .experience { background: #1a2920; }
+  .experience-row { border-color: #304037; }
+  .experience-row p { color: #b0beb4; }
+  .about-stamp { background: #d9f36a; color: #17251e; }
+}
+@media (max-width: 780px) {
+  .container { width: min(100% - 32px, 600px); }
+  .nav-links { gap: 14px; }
+  .nav-links a:not(.pill-link) { display: none; }
+  .hero-grid, .project-card, .about-grid { grid-template-columns: 1fr; }
+  .hero-grid { gap: 35px; }
+  .profile-card { min-height: 250px; }
+  .stats { gap: 10px; }
+  .stat strong { font-size: 15px; }
+  section { padding: 64px 0; }
+  .section-head { display: block; }
+  .project-visual { min-height: 260px; }
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-grid { gap: 28px; }
+  .about-stamp { min-height: 190px; }
+  .experience-row { grid-template-columns: 1fr; gap: 9px; }
+  .contact-panel { align-items: flex-start; flex-direction: column; }
+}
+@media (max-width: 440px) {
+  .skills-grid { grid-template-columns: 1fr; }
+  .brand span:last-child { max-width: 125px; line-height: 1.2; }
+  .profile-card { padding: 23px; }
+  .footer-inner { align-items: flex-start; flex-direction: column; }
+}
+</style>
+</head>
+<body>
+<div id="site-root">
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home" aria-label="Rockey Mathipa home"><span class="brand-mark">RM.</span><span>ROCKEY MATHIPA<br><small style="font-size:10px;color:var(--muted);font-weight:650;letter-spacing:.08em">WEB DEVELOPER</small></span></a>
+    <nav class="nav-links" aria-label="Main navigation"><a href="#work">Selected work</a><a href="#about">About</a><a href="#skills">Skills</a><a class="pill-link" href="#contact">Let's talk ↗</a></nav>
+  </div>
+</header>
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">Computer Science Graduate · South Africa</div>
+      <h1>I build thoughtful <em>digital experiences.</em></h1>
+      <p class="hero-copy">I'm Rockey Mathipa, a Computer Science graduate with a passion for website development, practical technology solutions and creating clear, user-friendly digital experiences.</p>
+      <div class="actions"><a class="btn btn-primary" href="#work">Explore my work <span>↘</span></a><a class="btn btn-secondary" href="#contact">Contact me <span>↗</span></a></div>
+    </div>
+    <aside class="profile-card" aria-label="Profile summary">
+      <div class="profile-initials">RM</div>
+      <div class="profile-caption"><small>Developer portfolio · 2026</small><h2>Rockey Mathipa</h2><p>Web Development · JavaScript · IT Solutions</p></div>
+    </aside>
+  </div>
+</section>
+<div class="container"><div class="stats"><div class="stat"><strong>Diploma</strong><span>Computer Science · TUT</span></div><div class="stat"><strong>1 year</strong><span>Technical support experience</span></div><div class="stat"><strong>Real project</strong><span>Live website showcase</span></div></div></div>
+<section id="work">
+  <div class="container">
+    <div class="section-head"><div><div class="section-kicker">01 / Selected work</div><h2 class="section-title">Websites and systems built for real-world use.</h2><p class="section-intro">Selected website and system projects that demonstrate my practical development work.</p></div></div>
+    <article class="project-card">
+      <div class="project-visual" aria-label="Illustrative website preview">
+        <div class="browser"><div class="browser-top"><i></i><i></i><i></i></div><div class="browser-content"><div class="browser-label">Learning · Growth · Opportunity</div><h3>Wisdom<br>Learnscape</h3><p>A digital learning destination designed to help visitors explore learning resources and opportunities.</p><div class="fake-lines"><span></span><span></span><span></span></div></div></div>
+      </div>
+      <div class="project-details"><div class="project-number">FEATURED PROJECT / 001</div><h3>Wisdom Learnscape</h3><p>A live website project I created. It is the main project I am presenting as evidence of my practical website development work. Open the live site to explore the published experience.</p><div class="tags"><span class="tag">Website Development</span><span class="tag">User Experience</span><span class="tag">Live Project</span></div><a class="text-link" href="https://wisdomlearnscape.co.za/" target="_blank" rel="noopener noreferrer">Visit live website ↗</a></div>
+    </article>
+    <article class="project-card" style="margin-top:22px">
+      <div class="project-visual" aria-label="Illustrative system preview" style="background:#e4eaf5">
+        <div class="browser" style="transform:rotate(2deg)"><div class="browser-top"><i></i><i></i><i></i></div><div class="browser-content" style="color:#203b66"><div class="browser-label" style="color:#607da8">Business · Technology · Systems</div><h3>Cloud Web Tech<br>Holdings</h3><p>A system project developed for a business-focused digital experience.</p><div class="fake-lines"><span style="background:#6688c4"></span><span style="background:#d6e0f1"></span><span style="background:#d6e0f1"></span></div></div></div>
+      </div>
+      <div class="project-details"><div class="project-number">SYSTEM PROJECT / 002</div><h3>Cloud Web Tech Holdings</h3><p>A second project I created: a web-based system published at Cloud Web Tech Holdings. This project broadens my portfolio beyond a website showcase and demonstrates my experience working on a system-oriented web project.</p><div class="tags"><span class="tag">Web System</span><span class="tag">System Development</span><span class="tag">Live Project</span></div><a class="text-link" href="https://cloud-web-tech-holdings.co.za/" target="_blank" rel="noopener noreferrer">Visit live system ↗</a></div>
+    </article>
+    <p style="font-size:12px;color:var(--muted);margin-top:14px">Note: Project descriptions focus on the information provided. Technologies and detailed system features have not been independently verified.</p>
+  </div>
+</section>
+<section id="about">
+  <div class="container about-grid">
+    <div><div class="section-kicker">02 / About me</div><div class="about-stamp"><strong>RM.</strong><span>Curious by nature. Practical by approach.</span></div></div>
+    <div class="about-copy"><h2 class="section-title">Technology should make things easier.</h2><p>I'm a Computer Science graduate from Tshwane University of Technology, where I completed my Diploma in 2024. I am interested in building useful websites and software that make information and services easier to access.</p><p>My professional experience in technical support has helped me develop a structured approach to troubleshooting, user assistance, documentation and solving problems. I bring that same practical mindset to development work.</p><p>I am looking for website development opportunities where I can contribute, learn from experienced teams and continue growing as a developer.</p><a class="text-link" href="mailto:rockeymathipa98@gmail.com">Email me about an opportunity ↗</a></div>
+  </div>
+</section>
+<section id="skills">
+  <div class="container"><div class="section-head"><div><div class="section-kicker">03 / Skills & strengths</div><h2 class="section-title">A technical foundation with a problem-solving mindset.</h2><p class="section-intro">Skills drawn from my Computer Science qualification and technical support experience.</p></div></div>
+  <div class="skills-grid">
+    <article class="skill-card"><div class="skill-icon">JS</div><h3>Software development</h3><p>JavaScript fundamentals and software development concepts.</p></article>
+    <article class="skill-card"><div class="skill-icon">UI</div><h3>Website development</h3><p>Practical website project experience, with a focus on clear and usable digital experiences.</p></article>
+    <article class="skill-card"><div class="skill-icon">DB</div><h3>Databases</h3><p>SQL database knowledge and computer science foundations.</p></article>
+    <article class="skill-card"><div class="skill-icon">IT</div><h3>Technical support</h3><p>Hardware and software troubleshooting, user support and incident documentation.</p></article>
+    <article class="skill-card"><div class="skill-icon">OS</div><h3>Systems & networking</h3><p>Windows and Linux, Active Directory, server support and LAN/WAN fundamentals.</p></article>
+    <article class="skill-card"><div class="skill-icon">+</div><h3>Professional strengths</h3><p>Communication, user training, critical thinking and collaborative problem-solving.</p></article>
+  </div></div>
+</section>
+<section class="experience" id="experience">
+  <div class="container"><div class="section-kicker">04 / Background</div><h2 class="section-title" style="margin-bottom:30px">Learning backed by hands-on experience.</h2>
+    <div class="experience-row"><div class="experience-date">2024</div><div><h3>Diploma in Computer Science</h3><p>Tshwane University of Technology (TUT). Academic foundation in computing and software development.</p></div></div>
+    <div class="experience-row"><div class="experience-date">1 year</div><div><h3>Technical Support · COGHSTA Limpopo</h3><p>Work Integrated Learning experience supporting hardware, software, servers, printers and network troubleshooting; working with Windows, Linux and Active Directory; and helping staff with technical issues and user guidance.</p></div></div>
+  </div>
+</section>
+<section id="contact">
+  <div class="container"><div class="contact-panel"><div><div class="section-kicker">05 / Get in touch</div><h2>Have a website project or an opportunity?</h2><p>I'm interested in junior website development roles, practical projects and opportunities to grow with a team. Let's connect.</p><p><strong>Email:</strong> rockeymathipa98@gmail.com<br><strong>Phone:</strong> 076 099 5443</p></div><a class="btn" href="mailto:rockeymathipa98@gmail.com?subject=Website%20Development%20Opportunity">Start a conversation ↗</a></div></div>
+</section>
+</main>
+<footer><div class="container footer-inner"><span>© <span id="year">2026</span> Rockey Mathipa · Developer Portfolio</span><div class="footer-links"><a href="https://wisdomlearnscape.co.za/" target="_blank" rel="noopener noreferrer">Wisdom Learnscape</a><a href="https://cloud-web-tech-holdings.co.za/" target="_blank" rel="noopener noreferrer">Cloud Web Tech Holdings</a><a href="mailto:rockeymathipa98@gmail.com">Email</a></div></div></footer>
+</div>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
